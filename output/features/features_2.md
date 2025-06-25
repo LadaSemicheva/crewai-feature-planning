@@ -1,0 +1,49 @@
+- **Feature: Resume Skill Parsing Integration**
+  - Description: Integrate an NLP-based resume parsing library that can identify and categorize predefined skills from candidate resumes as they are uploaded for extraction.
+  - Acceptance Criteria:
+    - The system successfully identifies a minimum of 10 different skill categories (e.g., programming languages, methodologies) from a variety of resume formats.
+    - Each skill categorized must align with the predefined industry-standard skill set.
+    - The system logs parsing activity with time stamps and detected skills for auditing purposes.
+  - Validation/Error Handling:
+    - Include checks to confirm successful parsing of resumes before proceeding; if parsing fails, the system should revert and notify the user accordingly.
+    - Record detailed parsing failures in a log for future troubleshooting.
+
+- **Feature: Store Extracted Skills in Database**
+  - Description: Create backend logic to store the categorized skills into the PostgreSQL database in a structured format, linking them to the respective candidate profile.
+  - Acceptance Criteria:
+    - Each extracted skill must be saved in a dedicated 'skills' table, including fields for `candidate_id`, `skill_name`, and `skill_category`.
+    - Validate relational integrity to ensure each skill entry is linked to an existing candidate profile in the database.
+    - Perform a test to ensure that skills can be queried efficiently from the database for reporting purposes.
+  - Validation/Error Handling:
+    - Implement checks to ensure that data integrity is maintained while writing to the database; any foreign key violations should prompt error notifications.
+    - Log unsuccessful database interactions for further investigation.
+
+- **Feature: Notification System for Recruiters**
+  - Description: Develop a notification system that alerts recruiters about the successful extraction of skills from uploaded resumes immediately after processing.
+  - Acceptance Criteria:
+    - Provide a user interface notification that includes a summary of extracted skills immediately after a successful resume upload and parsing.
+    - Notifications must be visible on the recruiter dashboard, with timestamps indicating when the extraction occurred.
+    - Recruiters should have the option to suppress notifications for specific candidates if needed.
+  - Validation/Error Handling:
+    - Implement fallback error messaging in case notifications fail to send, ensuring that the recruiter is still informed of the issue.
+    - Maintain logs of all notification attempts, listing successful and failed notifications for monitoring.
+
+- **Feature: GDPR Compliance Measures**
+  - Description: Ensure that the skill extraction process adheres to GDPR requirements, including data encryption and user consent for data processing.
+  - Acceptance Criteria:
+    - Implement consent forms that candidates must complete before their data is processed, visible during the resume upload phase.
+    - All candidate data, including skills, must be encrypted at rest in the database.
+    - Create a documentation section detailing GDPR compliance steps that can be reviewed by recruiters.
+  - Validation/Error Handling:
+    - Regular audits of data handling processes should be instituted to ensure ongoing compliance with privacy regulations.
+    - Generate alerts in case of violations or non-compliance issues to ensure prompt remediation.
+
+- **Feature: Comprehensive Testing Framework**
+  - Description: Establish a testing framework for the new skill extraction feature, to validate both frontend and backend functionality through unit and integration testing.
+  - Acceptance Criteria:
+    - Create unit tests for individual functions related to skill extraction and database interaction, covering at least 80% code coverage.
+    - Perform integration tests to ensure that components (upload, parse, store) interact as expected without issues.
+    - Document testing scenarios and results clearly for transparency.
+  - Validation/Error Handling:
+    - Develop automated tests that run on each deployment to detect regressions or failures immediately.
+    - Ensure test failures are logged and communicated to the development team for quick resolution.

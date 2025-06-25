@@ -1,0 +1,5 @@
+User is an AI Engineer.
+User is interested in AI Agents.
+User prefers AWS over GCP.
+User uses FastAPI and PostgreSQL in most projects.
+User avoids duplicate API endpoint implementations.

@@ -1,0 +1,47 @@
+- **Feature: Resume File Format Validation**
+  - Description: Implement validation middleware in the Node.js/Express API to check for allowed file formats during the upload process. If an invalid format is detected, an error response should be generated.
+  - Acceptance Criteria:
+    - The API rejects uploads of unsupported file types.
+    - Returns an error message specifying accepted formats when an invalid format is uploaded.
+    - All accepted formats should be clearly specified in the API documentation.
+  - Validation/Error Handling:
+    - Validate using `multer` in the middleware.
+    - Log invalid attempts with appropriate timestamps and user data.
+
+- **Feature: Resume Parsing and Data Extraction**
+  - Description: Integrate a resume parsing library to extract key candidate information from uploaded resumes and store this data in the PostgreSQL database.
+  - Acceptance Criteria:
+    - Successful extraction of candidate name, contact information, education, and work experience from resumes.
+    - Store extracted information in the database in a structured format.
+    - Notify the recruiter upon successful information extraction.
+  - Validation/Error Handling:
+    - Handle parsing errors gracefully, providing user feedback if extraction fails.
+    - Log parsing errors with relevant data points for debugging.
+
+- **Feature: Confirmation and Error Messaging for Uploads**
+  - Description: Implement functionality to provide users with confirmation messages upon successful uploads, and detailed error messages in case of failures.
+  - Acceptance Criteria:
+    - Display a confirmation message with the total number of uploaded resumes when the upload is successful.
+    - Provide descriptive error messages for various failure scenarios; e.g., file size too large, unsupported file type, or parsing failure.
+  - Validation/Error Handling:
+    - Ensure each error message is user-friendly and actionable.
+    - Log all upload success and failure attempts for audit.
+
+- **Feature: Secure File Upload Logging**
+  - Description: Create a secure logging mechanism to track all resume uploads, including timestamps, user information, and success/failure status.
+  - Acceptance Criteria:
+    - Each upload attempt is logged with a unique identifier, timestamp, user ID, and status.
+    - Ensure logs comply with security practices regarding personal data protection.
+  - Validation/Error Handling:
+    - Implement checks to ensure log entries are written without exception, providing fallback mechanisms.
+    - Regular audits of log entries for security and integrity auditing.
+
+- **Feature: Drag-and-Drop UI for Resume Upload**
+  - Description: Develop a user-friendly, React-based front-end component that allows recruiters to drag-and-drop files for resumé upload.
+  - Acceptance Criteria:
+    - Support drag-and-drop functionality on the upload interface.
+    - Display file type and size validation errors directly in the UI before submission.
+    - Provide dynamic feedback (loading indicators/messages) during the upload process.
+  - Validation/Error Handling:
+    - Inform users of specific errors in real-time as files are dropped, enhancing usability.
+    - Clear error messages must be shown if an invalid file is dragged and tried to submit.

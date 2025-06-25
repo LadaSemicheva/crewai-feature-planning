@@ -1,0 +1,52 @@
+tech_spec_extraction_task:
+  description: >
+    Given the user story: "{user_story}"
+    Extract a comprehensive technical specification including:
+    - Developer-friendly description
+    - Acceptance criteria
+    - Technical implementation notes
+
+    Before generating output, check existing technical specifications and features from memory.
+    If similar functionality has already been implemented, do not repeat it.
+    Instead, refer to the existing feature and only describe what is new or different.
+  expected_output: >
+    A structured technical specification that includes:
+    1. Description (developer-focused intent)
+    2. Acceptance Criteria (numbered list)
+    3. Implementation Notes (e.g., libraries, tools, standards)
+  agent: tech_spec_extractor_agent
+  markdown: true
+  output_file: "{tech_spec_output_path}"
+
+feature_extraction_task:
+  description: >
+    Based on the technical specification for the user story, generate concrete, scoped features.
+
+    Break it down into a set of concrete, scoped features or engineering tasks. Each feature
+    should be implementation-ready and independent enough to be translated into a code unit
+    (such as a module, function, or route).
+
+    Before writing new features, compare with previous features available in memory.
+    If a similar feature already exists, avoid duplicating it.
+    Instead, only describe additional functionality or integration needed.
+
+    Focus on clarity, granularity, and engineering completeness.
+    Output should not have any additional summary or notes that are not part of features.
+    Each feature should be implementation-ready, uniquely scoped, and not a repeat of what’s already been done.
+
+
+  expected_output: >
+    A bullet-point list of 2-5 features or tasks that:
+    - Contain a description from the developer’s perspective
+    - Contain a concise list of acceptance criteria in bullet format
+    - Cover the full scope of the technical specification
+    - Include validation and error handling considerations
+    - Are clear enough for a developer to begin implementing each individually
+
+    It should not have any additional headings or notes.
+
+  agent: feature_extraction_agent
+  markdown: true
+  context:
+    - tech_spec_extraction_task
+  output_file: "{feature_output_path}"
