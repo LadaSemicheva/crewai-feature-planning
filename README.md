@@ -61,7 +61,7 @@ First, if you haven't already, install uv:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Run the following command to install crewai CLI:
+Run the following command from the root of your project to install crewai CLI:
 
 ```bash
 uv tool install crewai
