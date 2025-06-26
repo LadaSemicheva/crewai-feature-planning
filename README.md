@@ -17,14 +17,14 @@ Long-Term Memory (SQLite): Maintains historical knowledge and prior decisions ac
 ```mermaid
 flowchart TD
     A[User Story Input]
-    A1[tech_spec_extractor_agent\nRole: Technical Specification Extractor]
-    A2[feature_extraction_agent\nRole: Feature Extraction Analyst]
+    A1[tech_spec_extractor_agent Role: Technical Specification Extractor]
+    A2[feature_extraction_agent Role: Feature Extraction Analyst]
     T1[tech_spec_extraction_task]
     T2[feature_extraction_task]
     TS[Technical Specification Output - tech_spec_i_md]
     F[Feature List Output - features_i_md]
     subgraph Tools
-        S1[SerperDevTool\nSearch the Web]
+        S1[SerperDevTool: Search the Web]
     end
 
 
@@ -39,8 +39,8 @@ flowchart TD
     A1 -.-> S1
 
     subgraph Memory
-        STM[Short Term Memory\nRAG based - OpenAI Embeddings]
-        LTM[Long Term Memory\nSQLite Storage]
+        STM[Short Term Memory: RAG based - OpenAI Embeddings]
+        LTM[Long Term Memory: SQLite Storage]
     end
 
     A1 -.-> Memory
